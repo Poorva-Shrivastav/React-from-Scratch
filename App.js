@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 let heading = React.createElement(
   "h1",
   { id: "heading" },
@@ -14,8 +17,6 @@ let parent = React.createElement("div", { id: "parent" }, [
     React.createElement("h2", { id: "h2" }, "I'm from h2 tag"),
   ]),
 ]);
-
-console.log(parent);
 
 let root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(parent);
