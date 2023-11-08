@@ -1,22 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-let heading = React.createElement(
-  "h1",
-  { id: "heading" },
-  "Hello World from React!"
+//JSX - HTML-LIKE syntax , not HTML inside JS
+
+// const jsxHeading = (
+//   <h1 id="heading" className="heading">
+//     I'm not HTML inside JS😡. I'm HTML-Like syntax
+//   </h1>
+// );
+
+const elem = <p>I'm an element present inside other element 🤓</p>;
+
+const variableTitle = <h1>I'm a variable being injected in jsx. {elem}</h1>;
+
+// Component Composition - calling a component inside another component
+
+const Title = () => <h1>I'm Title Component</h1>;
+const Heading = () => (
+  <>
+    <h1>I Come from Heading</h1>
+    <p>Below Titles are same thing, written differently</p>
+    <Title />
+    {Title()}
+    <Title></Title>
+    {variableTitle}
+  </>
 );
 
-let parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1" }, [
-    React.createElement("h1", { id: "h1" }, "I'm from h1 tag"),
-    React.createElement("h2", { id: "h2" }, "I'm from h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", { id: "h1" }, "I'm from h1 tag"),
-    React.createElement("h2", { id: "h2" }, "I'm from h2 tag"),
-  ]),
-]);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-let root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+// root.render(jsxHeading);
+root.render(<Heading />); // Babel understands <></>, so we have to wrap our component inside them for rendering
