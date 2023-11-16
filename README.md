@@ -5,3 +5,5 @@ https://stackoverflow.com/questions/22343224/whats-the-difference-between-tilde-
 
 https://parceljs.org/
 https://browserslist.dev/
+
+https://babeljs.io/
