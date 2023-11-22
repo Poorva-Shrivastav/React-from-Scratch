@@ -2,6 +2,7 @@
   "name": "poorva",
   "version": "1.0.0",
   "description": "learning react",
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",

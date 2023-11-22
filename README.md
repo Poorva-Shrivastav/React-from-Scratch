@@ -7,3 +7,19 @@ https://parceljs.org/
 https://browserslist.dev/
 
 https://babeljs.io/
+
+<!-- Food Ordering App -->
+
+- Header
+- - logo
+- - Nav bar
+- Body
+- -Search Bar
+- - Restaurantcontainer
+- - Restaurant card
+- - img
+- - Name od restaurant, star rating, cuisine, delivery time
+- Footer
+- - Copyright
+- - Links
+- - Contact
