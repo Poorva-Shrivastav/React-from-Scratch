@@ -8,6 +8,8 @@ https://browserslist.dev/
 
 https://babeljs.io/
 
+For CORS issue - https://corsproxy.io/?
+
 <!-- Food Ordering App -->
 
 - Header
@@ -23,3 +25,9 @@ https://babeljs.io/
 - - Copyright
 - - Links
 - - Contact
+
+<!--  -->
+
+Types of Routing
+-Client-side Routing
+-Server-side Routing

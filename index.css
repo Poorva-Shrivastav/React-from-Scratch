@@ -1,8 +1,8 @@
 .header {
   display: flex;
   justify-content: space-between;
-  border: 1px solid gray;
   height: 120px;
+  box-shadow: 0px 1px 5px gray;
 }
 
 .logo > img {
@@ -24,32 +24,59 @@
   margin: 20px;
 }
 
+.body {
+  background-color: rgb(255, 255, 255);
+  margin-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 .search {
   padding: 10px;
   display: flex;
 }
 .rest-container {
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 5vh;
+}
+.rest-container > a {
+  color: inherit;
+  text-decoration: none;
 }
 .res-card {
-  height: 300px;
-  width: 200px;
-  background-color: lightgray;
+  height: 350px;
+  width: 250px;
   padding: 5px;
   margin: 10px;
 }
-.res-card:hover {
-  border: 1px solid gray;
-  cursor: pointer;
-}
-.res-logo {
+
+.res-img-container {
+  height: 50%;
   width: 100%;
-  height: 100px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
 }
 
-.res-card > h4 {
-  font-size: 14px;
+.res-logo {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  border-radius: 16px;
+}
+.res-desc-container {
+  height: 50%;
+}
+
+.res-desc-container > h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+}
+.res-desc-container > p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .shimmer-container {
@@ -75,4 +102,52 @@
 
 .search-container {
   margin-right: 20px;
+}
+
+.res-menu-container {
+  height: inherit;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 50px;
+}
+
+.res-menu-outer-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 50px;
+}
+
+.rest-menu-category-title {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rest-food-details {
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  border-bottom: 0.5px solid gray;
+}
+.rest-food-details-inner {
+  display: flex;
+  justify-content: center;
+}
+.rest-food-items {
+  width: 50%;
+}
+.rest-food-items > p {
+  font-size: 14px;
+  color: gray;
+}
+.rest-food-item-img {
+  width: 20%;
+  align-self: center;
+}
+
+.rest-food-item-img > img {
+  border-radius: 16px;
 }
