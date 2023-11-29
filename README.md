@@ -31,3 +31,12 @@ For CORS issue - https://corsproxy.io/?
 Types of Routing
 -Client-side Routing
 -Server-side Routing
+
+Class Based Component
+-super(props)
+-Github user API - https://docs.github.com/en/rest/users?apiVersion=2022-11-28
+
+- https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+-Why async callbacks cannot be used in useEffect
+Let's understand the reasons why an asynchronous callback function cannot be called directly from a useEffect() hook. This is because the useEffect hook expects its effect function to return either a cleanup function or nothing at all. This is due to the useEffect() hook's callback function's asynchronous execution and lack of blocking. Therefore, we must follow a specific pattern if we want to call an asynchronous function inside the useEffect() hook.

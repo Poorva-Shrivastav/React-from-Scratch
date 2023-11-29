@@ -151,3 +151,8 @@
 .rest-food-item-img > img {
   border-radius: 16px;
 }
+
+.user-details {
+  padding: 10px;
+  border: 1px solid black;
+}
