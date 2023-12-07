@@ -31,3 +31,12 @@ For CORS issue - https://corsproxy.io/?
 Types of Routing
 -Client-side Routing
 -Server-side Routing
+
+<!--  -->
+
+- https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event
+
+<!--  -->
+
+- Chunking/Dynamic Bundling/ Lazy Loading/ Code Splitting/ Dynamic Bundling - all same
+- https://react.dev/reference/react/lazy
