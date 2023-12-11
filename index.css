@@ -118,26 +118,32 @@
 }
 
 .rest-menu-category-title {
-  width: 60%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 19%;
 }
 
 .rest-food-details {
-  width: 60%;
+  width: 65%;
   display: flex;
   justify-content: space-around;
-  margin: 10px;
+  margin: 5px;
   border-bottom: 0.5px solid gray;
 }
 .rest-food-details-inner {
   display: flex;
   justify-content: center;
+  height: 25vh;
 }
 .rest-food-items {
-  width: 50%;
+  width: 70%;
+}
+.rest-food-items > h5 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
 }
 .rest-food-items > p {
   font-size: 14px;
@@ -150,4 +156,23 @@
 
 .rest-food-item-img > img {
   border-radius: 16px;
+  height: 15vh;
+  width: 10vw;
+}
+.veg-img-container {
+  height: 4vh;
+}
+
+.non-veg-img {
+  height: 4vh;
+}
+.veg-img {
+  height: 2.5vh;
+}
+.bestseller {
+  font-size: 13px;
+  color: #ee9c00;
+  font-weight: 500;
+  display: inline-block;
+  vertical-align: middle;
 }
