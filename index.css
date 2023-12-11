@@ -117,7 +117,7 @@
   margin: 50px;
 }
 
-.rest-menu-category-title {
+.rest-category-title {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
