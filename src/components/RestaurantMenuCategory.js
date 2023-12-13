@@ -8,7 +8,7 @@ const RestaurantMenuCategory = ({ cardCaterogyTitle }) => {
       {slicedCard &&
         slicedCard?.map((item) => (
           <>
-            <h4 className="rest-category-title">
+            <h4 className="font-extrabold py-4 ">
               {item?.card?.card?.title} (
               {item?.card?.card?.itemCards?.length > 0
                 ? item?.card?.card?.itemCards?.length

@@ -4,30 +4,18 @@ import RestaurantCard from "./ResCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/customHook/useOnlineStatus";
+import useRestaurantData from "../utils/customHook/useRestaurantData";
 
 export const Body = () => {
-  const [list, setList] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [searchVal, setSearchVal] = useState("");
+  const list = useRestaurantData();
+  const [filteredData, setFilteredData] = useState();
   const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    setFilteredData(list);
+  }, [list]);
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    //optional chaining
-    setList(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredData(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  console.log(filteredData);
 
   if (!onlineStatus)
     return (
@@ -39,40 +27,30 @@ export const Body = () => {
   }
 
   return (
-    <div className="body">
-      <div className="search">
-        <div className="search-container">
-          <input
-            type="text"
-            value={searchVal}
-            onChange={(e) => setSearchVal(e.target.value)}
-          />
-          <button
-            onClick={() => {
-              const searchedData = list.filter((rest) =>
-                rest.info.name.toLowerCase().includes(searchVal.toLowerCase())
-              );
-              setFilteredData(searchedData);
-            }}
-          >
-            Search
-          </button>
-        </div>
+    <div className="m-32">
+      <h1 className="font-bold text-3xl p-4 mx-14 my-4">
+        Restaurants with online food delivery in Bangalore
+      </h1>
+      <div>
         <button
+          className="p-2 mx-16 bg-gray-100 rounded-lg cursor-pointer"
           onClick={() => {
             let newList = list.filter((item) => item.info.avgRating > 4);
             setFilteredData(newList);
           }}
         >
-          Top Restaurants
+          Top Rated Restaurants
         </button>
       </div>
-      <div className="rest-container">
-        {filteredData.map((rest) => (
-          <Link key={rest.info.id} to={`/restaurants/${rest.info.id}`}>
-            <RestaurantCard resData={rest} />
-          </Link>
-        ))}
+      <div className="flex flex-wrap justify-center ">
+        {filteredData &&
+          filteredData.map((rest) => (
+            <Link key={rest.info.id} to={`/restaurants/${rest.info.id}`}>
+              <div>
+                <RestaurantCard resData={rest} />
+              </div>
+            </Link>
+          ))}
       </div>
     </div>
   );
