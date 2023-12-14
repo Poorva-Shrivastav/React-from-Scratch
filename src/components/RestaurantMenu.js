@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/customHook/useRestaurantMenu";
@@ -8,6 +8,7 @@ import { ALERT_IMG_URL } from "../utils/constants";
 const RestaurantMenu = () => {
   const { restId } = useParams();
   const restInfo = useRestaurantMenu(restId);
+  const [catergoryIndex, setCatergoryIndex] = useState(0);
 
   if (restInfo === null) return <Shimmer />;
 
@@ -50,8 +51,12 @@ const RestaurantMenu = () => {
       </p>
       <div className="py-4 border-y border-x-gray-100 border-dashed bg-gray-100">
         {cardCaterogyData &&
-          cardCaterogyData.map((item) => (
-            <RestaurantMenuCategory item={item} />
+          cardCaterogyData.map((item, index) => (
+            <RestaurantMenuCategory
+              item={item}
+              showItems={index === catergoryIndex ? true : false}
+              setCatergoryIndex={() => setCatergoryIndex(index)}
+            />
           ))}
       </div>
     </div>
