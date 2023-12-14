@@ -11,12 +11,16 @@ const RestaurantMenu = () => {
 
   if (restInfo === null) return <Shimmer />;
 
-  const cardCaterogyTitle =
-    restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  const cardCaterogyData =
+    restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (catergory) =>
+        catergory?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
 
   return (
-    <div className="p-4 mx-72 my-32 ">
-      <div className="res-menu-outer-div flex justify-between">
+    <div className="p-4 mx-auto w-7/12 my-32 ">
+      <div className="flex justify-between">
         <div>
           <h3 className="py-2 font-bold text-lg">
             {restInfo?.cards[0]?.card?.card?.info?.name}
@@ -44,8 +48,11 @@ const RestaurantMenu = () => {
         <img src={ALERT_IMG_URL} alt="" className="inline-block pr-2" />
         {restInfo?.cards[0]?.card?.card?.info?.feeDetails?.message}
       </p>
-      <div className="py-4 border-y border-x-gray-100">
-        {<RestaurantMenuCategory cardCaterogyTitle={cardCaterogyTitle} />}
+      <div className="py-4 border-y border-x-gray-100 border-dashed bg-gray-100">
+        {cardCaterogyData &&
+          cardCaterogyData.map((item) => (
+            <RestaurantMenuCategory item={item} />
+          ))}
       </div>
     </div>
   );

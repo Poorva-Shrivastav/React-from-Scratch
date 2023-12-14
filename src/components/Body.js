@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { resArr } from "../utils/mockData";
-import RestaurantCard from "./ResCard";
+import RestaurantCard, { withPromoted } from "./ResCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/customHook/useOnlineStatus";
@@ -8,14 +8,15 @@ import useRestaurantData from "../utils/customHook/useRestaurantData";
 
 export const Body = () => {
   const list = useRestaurantData();
-  const [filteredData, setFilteredData] = useState();
+  const [filteredData, setFilteredData] = useState(list);
   const onlineStatus = useOnlineStatus();
+
+  //hoc
+  const promotedComponent = withPromoted(RestaurantCard);
 
   useEffect(() => {
     setFilteredData(list);
   }, [list]);
-
-  console.log(filteredData);
 
   if (!onlineStatus)
     return (

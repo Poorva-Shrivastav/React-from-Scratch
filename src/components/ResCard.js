@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = ({ resData }) => {
@@ -38,6 +39,18 @@ const RestaurantCard = ({ resData }) => {
       <p>{areaName}</p>
     </div>
   );
+};
+
+//hoc
+
+export const withPromoted = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <Fragment className="bg-pink-200">
+        <RestaurantCard {...props} />
+      </Fragment>
+    );
+  };
 };
 
 export default RestaurantCard;

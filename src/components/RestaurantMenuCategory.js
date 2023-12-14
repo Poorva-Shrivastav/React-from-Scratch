@@ -1,29 +1,31 @@
+import { useState } from "react";
 import RestaurantMenuItem from "./RestaurantMenuItem";
 
-const RestaurantMenuCategory = ({ cardCaterogyTitle }) => {
-  const slicedCard = cardCaterogyTitle?.slice(1);
+const RestaurantMenuCategory = ({ item }) => {
+  const [showItems, setShowItems] = useState(false);
+
+  const handleClick = () => setShowItems(!showItems);
 
   return (
-    <>
-      {slicedCard &&
-        slicedCard?.map((item) => (
-          <>
-            <h4 className="font-extrabold py-4 ">
-              {item?.card?.card?.title} (
-              {item?.card?.card?.itemCards?.length > 0
-                ? item?.card?.card?.itemCards?.length
-                : 0}
-              )
-            </h4>
-            <div>
-              {item.card.card?.itemCards &&
-                item.card.card?.itemCards.map((items) => (
-                  <RestaurantMenuItem items={items} />
-                ))}
-            </div>
-          </>
-        ))}
-    </>
+    <div>
+      <div
+        className=" bg-gray-50 shadow-lg p-4 mb-5 border-b-gray-300 cursor-pointer"
+        onClick={handleClick}
+      >
+        <div className="flex justify-between">
+          <span className="font-bold text-lg">
+            {item?.card?.card?.title}
+            {item?.card?.card?.itemCards?.length > 0 ? (
+              <span>({item?.card?.card?.itemCards?.length})</span>
+            ) : null}
+          </span>
+          <span>{showItems ? "⬆️" : "⬇"}</span>
+        </div>
+        {showItems && (
+          <RestaurantMenuItem items={item?.card?.card?.itemCards} />
+        )}
+      </div>
+    </div>
   );
 };
 
