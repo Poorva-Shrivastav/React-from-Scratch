@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MENU_IMG_URL } from "../utils/constants";
 import veg from "../assets/images/veg.png";
 import nonveg from "../assets/images/non-veg.png";
+import UserContext from "../utils/context/userContext";
 
 const RestaurantMenuItem = ({ items }) => {
   return (

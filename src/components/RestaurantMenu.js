@@ -8,7 +8,7 @@ import { ALERT_IMG_URL } from "../utils/constants";
 const RestaurantMenu = () => {
   const { restId } = useParams();
   const restInfo = useRestaurantMenu(restId);
-  const [catergoryIndex, setCatergoryIndex] = useState(0);
+  // const [catergoryIndex, setCatergoryIndex] = useState(0);
 
   if (restInfo === null) return <Shimmer />;
 
@@ -53,9 +53,10 @@ const RestaurantMenu = () => {
         {cardCaterogyData &&
           cardCaterogyData.map((item, index) => (
             <RestaurantMenuCategory
+              key={item?.card?.card?.title}
               item={item}
-              showItems={index === catergoryIndex ? true : false}
-              setCatergoryIndex={() => setCatergoryIndex(index)}
+              // showItems={index === catergoryIndex ? true : false}
+              // setCatergoryIndex={() => setCatergoryIndex(index)}
             />
           ))}
       </div>

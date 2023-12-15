@@ -3,10 +3,17 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/customHook/useOnlineStatus";
 import SearchBar from "./SearchBar";
+import {
+  useUpdateUserContext,
+  useUserContext,
+} from "../utils/context/userContext";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
   const onlineStatus = useOnlineStatus();
+
+  const { loggedInUser } = useUserContext();
+  const { clickHandler } = useUpdateUserContext();
 
   return (
     <div className="flex justify-between px-4 shadow-lg fixed top-0 w-full z-50 bg-white">
@@ -28,6 +35,9 @@ const Header = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li className="p-4 hover:text-orange-400">Cart</li>
+          <button className="p-4 hover:text-orange-400" onClick={clickHandler}>
+            Change user
+          </button>
           <button
             className="p-4 hover:text-orange-400"
             onClick={() => {
@@ -38,6 +48,8 @@ const Header = () => {
           >
             {loginBtn}
           </button>
+
+          <li className="p-4 hover:text-orange-400">{loggedInUser}</li>
         </ul>
       </div>
     </div>

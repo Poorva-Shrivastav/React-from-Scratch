@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Body } from "./components/Body";
 import Header from "./components/Header";
@@ -8,21 +8,25 @@ import {
   createBrowserRouter,
   useParams,
 } from "react-router-dom";
-// import About from "./components/About";
-import Contact from "./components/Contact";
+
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { UserContextProvider } from "./utils/context/userContext";
 
 const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"));
 
 const About = lazy(() => import("./components/About"));
 
+const Contact = lazy(() => import("./components/Contact"));
+
 const AppLayout = () => {
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContextProvider>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContextProvider>
   );
 };
 
@@ -45,7 +49,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: (
+          <Suspense fallback={<h1>....Loading Contact Info</h1>}>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurants/:restId",

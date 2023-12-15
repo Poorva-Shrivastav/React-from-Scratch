@@ -8,9 +8,15 @@ const useRestaurantMenu = (restId) => {
   }, []);
 
   const fetchData = async () => {
-    const res = await fetch(`${MENU_API_URL}${restId}`);
-    const json = await res.json();
-    setRestInfo(json.data);
+    {
+      try {
+        const res = await fetch(`${MENU_API_URL}${restId}`);
+        const json = await res.json();
+        setRestInfo(json.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return restInfo;
