@@ -40,3 +40,7 @@ Types of Routing
 
 - Chunking/Dynamic Bundling/ Lazy Loading/ Code Splitting/ Dynamic Bundling - all same
 - https://react.dev/reference/react/lazy
+
+Free CORS Proxy Server
+
+- https://allorigins.win/
