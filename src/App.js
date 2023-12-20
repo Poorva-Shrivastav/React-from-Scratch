@@ -12,6 +12,8 @@ import {
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { UserContextProvider } from "./utils/context/userContext";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"));
 
@@ -19,14 +21,18 @@ const About = lazy(() => import("./components/About"));
 
 const Contact = lazy(() => import("./components/Contact"));
 
+const Cart = lazy(() => import("./components/Cart"));
+
 const AppLayout = () => {
   return (
-    <UserContextProvider>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContextProvider>
+    <Provider store={store}>
+      <UserContextProvider>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContextProvider>
+    </Provider>
   );
 };
 
@@ -60,6 +66,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<h1>....Loading</h1>}>
             <RestaurantMenu />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/cart",
+        element: (
+          <Suspense fallback={<h1>....Loading</h1>}>
+            <Cart />
           </Suspense>
         ),
       },

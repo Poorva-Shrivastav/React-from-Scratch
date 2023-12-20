@@ -7,6 +7,8 @@ import {
   useUpdateUserContext,
   useUserContext,
 } from "../utils/context/userContext";
+import { useSelector } from "react-redux";
+import store from "../redux/store";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
@@ -14,6 +16,13 @@ const Header = () => {
 
   const { loggedInUser } = useUserContext();
   const { clickHandler } = useUpdateUserContext();
+
+  //subscribing to the store using selector
+  const cartItems = useSelector((store) => store.cart.items);
+
+  let itemQty = cartItems
+    .map((item) => item.quantity)
+    .reduce((acc, curr) => acc + curr, 0);
 
   return (
     <div className="flex justify-between px-4 shadow-lg fixed top-0 w-full z-50 bg-white">
@@ -24,9 +33,7 @@ const Header = () => {
       </div>
       <div className="flex items-center justify-evenly">
         <ul className="flex p-4 text-gray-600 text-md ">
-          <li className="hover:text-orange-400">
-            <SearchBar />
-          </li>
+          <li className="hover:text-orange-400">{/* <SearchBar /> */}</li>
 
           <li className="p-4 hover:text-orange-400">
             <Link to="/about">About Us</Link>
@@ -34,7 +41,9 @@ const Header = () => {
           <li className="p-4 hover:text-orange-400">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="p-4 hover:text-orange-400">Cart</li>
+          <li className="p-4 hover:text-orange-400 ">
+            <Link to="/cart">🛒 {itemQty} items</Link>
+          </li>
           <button className="p-4 hover:text-orange-400" onClick={clickHandler}>
             Change user
           </button>

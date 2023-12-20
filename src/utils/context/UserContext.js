@@ -20,7 +20,6 @@ export const UserContextProvider = ({ children }) => {
       name: "Poorva",
     };
     setUserName(data.name);
-    console.log("clicked");
   };
 
   return (

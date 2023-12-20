@@ -3,14 +3,15 @@ import { MENU_IMG_URL } from "../utils/constants";
 import veg from "../assets/images/veg.png";
 import nonveg from "../assets/images/non-veg.png";
 import UserContext from "../utils/context/userContext";
+import AddButton from "./AddButton";
 
 const RestaurantMenuItem = ({ items }) => {
   return (
-    <>
+    <div key={items}>
       {items.map((item) => (
         <div key={item?.card?.info?.id}>
           <div className="w-full flex py-4 justify-between border-b border-x-gray-50">
-            <div className="w-3/4">
+            <div className="w-3/4 py-4 ">
               <div className="flex items-center ">
                 {item?.card?.info?.isVeg === 1 ? (
                   <img src={veg} alt="🟢" className="w-5 h-5 inline-block" />
@@ -37,19 +38,24 @@ const RestaurantMenuItem = ({ items }) => {
                 {item?.card?.info?.description}
               </p>
             </div>
-            <div className="">
-              {item?.card?.info?.imageId && (
-                <img
-                  className="rounded-lg w-28 h-28 object-cover"
-                  src={MENU_IMG_URL + item?.card?.info?.imageId}
-                  alt="food-img"
-                />
-              )}
+            <div>
+              <div className="relative py-8">
+                {item?.card?.info?.imageId ? (
+                  <img
+                    className="rounded-lg w-32 h-24 object-cover"
+                    src={MENU_IMG_URL + item?.card?.info?.imageId}
+                    alt="food-img"
+                  />
+                ) : (
+                  <div className="rounded-lg w-32 object-cover"></div>
+                )}
+                <AddButton item={item} />
+              </div>
             </div>
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
