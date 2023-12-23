@@ -8,7 +8,6 @@ import { ALERT_IMG_URL } from "../utils/constants";
 const RestaurantMenu = () => {
   const { restId } = useParams();
   const restInfo = useRestaurantMenu(restId);
-  // const [catergoryIndex, setCatergoryIndex] = useState(0);
 
   if (restInfo === null) return <Shimmer />;
 

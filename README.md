@@ -44,3 +44,14 @@ Types of Routing
 Free CORS Proxy Server
 
 - https://allorigins.win/
+
+Redux Toolkit
+
+- create add button
+- build store using "configureStore" & connect store to app using Provider
+- create a slice - createSlice
+- dispatch action from button
+- call the reducer function
+- combine all reducers together in store
+- wrap app with provider and pass store to it
+- subcribe to store using selector

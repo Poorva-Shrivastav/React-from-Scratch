@@ -11,14 +11,17 @@ const useRestaurantData = () => {
   const fetchData = async () => {
     const res = await fetch(ALL_REST_URL);
     const json = await res.json();
-    const newJson = JSON.parse(json?.contents);
+    // const newJson = JSON.parse(json?.contents);
+    // setList(
+    //   newJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+    // ?.restaurants
+    // );
+
     setList(
-      newJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-
-  return list;
+  if (list && list.length > 0) return list;
 };
 
 export default useRestaurantData;
