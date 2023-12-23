@@ -14,14 +14,14 @@ const useRestaurantData = () => {
     // const newJson = JSON.parse(json?.contents);
     // setList(
     //   newJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-    //     ?.restaurants
+    // ?.restaurants
     // );
+
     setList(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-
-  return list;
+  if (list && list.length > 0) return list;
 };
 
 export default useRestaurantData;

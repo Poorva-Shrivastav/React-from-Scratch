@@ -34,8 +34,8 @@ const cartSlice = createSlice({
         (item) => item?.card?.info?.id === action.payload?.card?.info?.id
       );
 
-      if (itemsInCart.quantity === 1) {
-        itemsInCart.quantity = 1;
+      if (itemsInCart.quantity === 0) {
+        itemsInCart.quantity = 0;
       } else itemsInCart.quantity--;
     },
   },

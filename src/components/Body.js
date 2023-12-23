@@ -11,6 +11,8 @@ export const Body = () => {
   const [filteredData, setFilteredData] = useState(list);
   const onlineStatus = useOnlineStatus();
 
+  console.log(list);
+
   //hoc
   const promotedComponent = withPromoted(RestaurantCard);
 
@@ -28,7 +30,7 @@ export const Body = () => {
   }
 
   return (
-    <div className="m-32">
+    <div className="m-50">
       <h1 className="font-bold text-3xl p-4 mx-14 my-4">
         Restaurants with online food delivery in Bangalore
       </h1>

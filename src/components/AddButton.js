@@ -9,8 +9,9 @@ import { useEffect, useState } from "react";
 const AddButton = ({ item }) => {
   const [isCartBtn, setIsCartBtn] = useState(false);
 
-  const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.items);
+  const dispatch = useDispatch();
+
   const itemId = item?.card?.info?.id;
 
   const addHandler = (itemName) => {
