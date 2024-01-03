@@ -8,16 +8,27 @@ import useRestaurantData from "../utils/customHook/useRestaurantData";
 
 export const Body = () => {
   const list = useRestaurantData();
-  const [filteredData, setFilteredData] = useState(list);
-  const onlineStatus = useOnlineStatus();
 
-  console.log(list);
+  const [filteredData, setFilteredData] = useState([]);
+  const [carouselData, setCarouselData] = useState([]);
+
+  const onlineStatus = useOnlineStatus();
 
   //hoc
   const promotedComponent = withPromoted(RestaurantCard);
 
   useEffect(() => {
-    setFilteredData(list);
+    list && list.length > 0
+      ? setFilteredData(
+          list[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        )
+      : setFilteredData([]);
+
+    list && list.length > 0
+      ? setCarouselData(
+          list[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        )
+      : setCarouselData([]);
   }, [list]);
 
   if (!onlineStatus)
@@ -29,14 +40,38 @@ export const Body = () => {
     return <Shimmer />;
   }
 
+  console.log(list);
+
   return (
-    <div className="m-50">
-      <h1 className="font-bold text-3xl p-4 mx-14 my-4">
+    <div className="m-36">
+      <div>
+        <h1 className="font-bold text-3xl p-4 mx-8 my-4">
+          Top restaurant chains in Bangalore
+        </h1>
+      </div>
+      <div className="mx-14 ">
+        <div className="overflow-x-scroll">
+          <div className="flex">
+            {carouselData ? (
+              carouselData.map((rest) => (
+                <Link key={rest.info.id} to={`/restaurants/${rest.info.id}`}>
+                  <div>
+                    <RestaurantCard resData={rest} />
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <Shimmer />
+            )}
+          </div>
+        </div>
+      </div>
+      <h1 className="font-bold text-3xl p-4 mx-8 my-4">
         Restaurants with online food delivery in Bangalore
       </h1>
       <div>
         <button
-          className="p-2 mx-16 bg-gray-100 rounded-lg cursor-pointer"
+          className="p-2 mx-12 bg-gray-100 rounded-lg cursor-pointer"
           onClick={() => {
             let newList = list.filter((item) => item.info.avgRating > 4);
             setFilteredData(newList);
@@ -46,14 +81,17 @@ export const Body = () => {
         </button>
       </div>
       <div className="flex flex-wrap justify-center ">
-        {filteredData &&
+        {filteredData ? (
           filteredData.map((rest) => (
             <Link key={rest.info.id} to={`/restaurants/${rest.info.id}`}>
               <div>
                 <RestaurantCard resData={rest} />
               </div>
             </Link>
-          ))}
+          ))
+        ) : (
+          <Shimmer />
+        )}
       </div>
     </div>
   );

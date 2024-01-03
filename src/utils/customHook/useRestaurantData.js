@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ALL_REST_URL } from "../constants";
 
 const useRestaurantData = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState({});
 
   useEffect(() => {
     fetchData();
@@ -17,9 +17,7 @@ const useRestaurantData = () => {
     // ?.restaurants
     // );
 
-    setList(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    setList(json?.data?.cards);
   };
   if (list && list.length > 0) return list;
 };
