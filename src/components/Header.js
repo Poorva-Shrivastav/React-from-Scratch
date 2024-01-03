@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/customHook/useOnlineStatus";
 import SearchBar from "./SearchBar";
@@ -9,6 +8,9 @@ import {
 } from "../utils/context/userContext";
 import { useSelector } from "react-redux";
 import store from "../redux/store";
+import { LOGO_URL } from "../utils/constants";
+import logo from "../assets/images/logo.png";
+// !!Logo used in this project is for learning purpose only. No commercial usage is intended.
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
@@ -28,7 +30,7 @@ const Header = () => {
     <div className="flex justify-between px-4 shadow-lg fixed top-0 w-full z-50 bg-white">
       <div>
         <Link to="/">
-          <img className="w-24" src={LOGO_URL} />
+          <img className="w-24" src={logo} />
         </Link>
       </div>
       <div className="flex items-center justify-evenly">

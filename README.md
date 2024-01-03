@@ -1,3 +1,5 @@
+!!Logo used in this project is for learning purpose only. No commercial usage is intended.
+
 https://react.dev/reference/react/createElement
 https://react.dev/reference/react-dom/client/createRoot
 
