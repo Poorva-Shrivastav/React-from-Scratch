@@ -5,10 +5,11 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/customHook/useOnlineStatus";
 import useRestaurantData from "../utils/customHook/useRestaurantData";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { ALL_REST_URL } from "../utils/constants";
 
 export const Body = () => {
   const list = useRestaurantData();
-
   const [filteredData, setFilteredData] = useState([]);
   const [carouselData, setCarouselData] = useState([]);
 
@@ -40,7 +41,21 @@ export const Body = () => {
     return <Shimmer />;
   }
 
-  console.log(list);
+  const [hasMore, setHasMore] = useState(true);
+  const [index, setIndex] = useState(2);
+
+  const fetchMoreData = async () => {
+    console.log("called");
+    const res = await fetch(ALL_REST_URL);
+    const json = await res.json();
+    setFilteredData((prevItems) => [
+      ...prevItems,
+      ...list[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+    ]);
+
+    json?.data?.cards.length > 0 ? setHasMore(true) : setHasMore(false);
+    setIndex((prevIndex) => prevIndex + 1);
+  };
 
   return (
     <div className="m-36">
@@ -80,8 +95,31 @@ export const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="flex flex-wrap justify-center ">
-        {filteredData ? (
+
+      <InfiniteScroll
+        dataLength={filteredData.length}
+        next={fetchMoreData}
+        hasMore={hasMore}
+      >
+        <div className="flex flex-wrap justify-center ">
+          {filteredData ? (
+            filteredData.map((rest) => (
+              <Link
+                key={rest.info.id + Date.now()}
+                to={`/restaurants/${rest.info.id}`}
+              >
+                <div>
+                  <RestaurantCard resData={rest} />
+                </div>
+              </Link>
+            ))
+          ) : (
+            <Shimmer />
+          )}
+        </div>
+      </InfiniteScroll>
+
+      {/* {filteredData ? (
           filteredData.map((rest) => (
             <Link key={rest.info.id} to={`/restaurants/${rest.info.id}`}>
               <div>
@@ -91,8 +129,8 @@ export const Body = () => {
           ))
         ) : (
           <Shimmer />
-        )}
-      </div>
+        )} */}
+      {/* </div> */}
     </div>
   );
 };

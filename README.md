@@ -30,7 +30,8 @@ For CORS issue - https://corsproxy.io/?
 
 <!--  -->
 
-Types of Routing
+# Types of Routing
+
 -Client-side Routing
 -Server-side Routing
 
@@ -57,3 +58,16 @@ Redux Toolkit
 - combine all reducers together in store
 - wrap app with provider and pass store to it
 - subcribe to store using selector
+
+# Types of testing
+
+- Unit testing
+- Integration testing
+- End to end testing - e2e testing
+
+# Setting up testing
+
+- Install React testing library
+- Install jest
+- Install Babel dependencies
+- Configure Babel
