@@ -70,4 +70,6 @@ Redux Toolkit
 - Install React testing library
 - Install jest
 - Install Babel dependencies
-- Configure Babel
+- Configure Babel under babel.config.js
+- npx jest --init - JS DOM
+- install jsdom library
