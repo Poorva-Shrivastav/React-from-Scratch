@@ -13,7 +13,7 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { UserContextProvider } from "./utils/context/userContext";
+import { UserContextProvider } from "./utils/context/UserContext";
 
 const RestaurantMenu = lazy(() => import("./components/RestaurantMenu"));
 

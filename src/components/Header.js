@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 import {
   useUpdateUserContext,
   useUserContext,
-} from "../utils/context/userContext";
+} from "../utils/context/UserContext";
 import { useSelector } from "react-redux";
 import store from "../redux/store";
 import { LOGO_URL } from "../utils/constants";
