@@ -12,6 +12,7 @@ const RestaurantCard = ({ resData }) => {
     areaName,
     aggregatedDiscountInfoV3,
   } = resData?.info;
+
   return (
     <div className="my-4 mx-0 p-4  cursor-pointer transform w-[270px]  transition duration-500 hover:scale-90">
       <div className="relative">

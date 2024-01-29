@@ -73,3 +73,6 @@ Redux Toolkit
 - Configure Babel under babel.config.js
 - npx jest --init - JS DOM
 - install jsdom library
+- npm i -D @babel/preset-react to enable writing JSX in the test cases
+- Include @babel/preset-react inside babel config file
+- npm i -D @testing-library/jest-dom

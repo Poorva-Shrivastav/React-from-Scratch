@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { resArr } from "../utils/mockData";
-import RestaurantCard, { withPromoted } from "./ResCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/customHook/useOnlineStatus";
 import useRestaurantData from "../utils/customHook/useRestaurantData";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ALL_REST_URL } from "../utils/constants";
+import RestaurantCard, { withPromoted } from "./RestaurantCard";
 
 export const Body = () => {
   const list = useRestaurantData();

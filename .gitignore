@@ -2,5 +2,6 @@
 /dist
 .parcel-cache
 /utils
+/coverage
 
 .DS_Store
