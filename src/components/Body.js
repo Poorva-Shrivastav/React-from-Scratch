@@ -105,7 +105,7 @@ export const Body = () => {
         </div>
       </div>
 
-      {/* <InfiniteScroll
+      <InfiniteScroll
         dataLength={filteredData.length}
         next={fetchMoreData}
         hasMore={hasMore}
@@ -126,9 +126,9 @@ export const Body = () => {
             <Shimmer />
           )}
         </div>
-      </InfiniteScroll> */}
+      </InfiniteScroll>
 
-      <div className="flex flex-wrap justify-center ">
+      {/* <div className="flex flex-wrap justify-center ">
         {filteredData.map((rest) => (
           <Link key={rest.info.id} to={`/restaurants/${rest.info.id}`}>
             <div data-testid="resCard">
@@ -136,7 +136,7 @@ export const Body = () => {
             </div>
           </Link>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
