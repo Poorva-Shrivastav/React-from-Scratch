@@ -76,3 +76,16 @@ Redux Toolkit
 - npm i -D @babel/preset-react to enable writing JSX in the test cases
 - Include @babel/preset-react inside babel config file
 - npm i -D @testing-library/jest-dom
+
+-How fetch works => fetch("...").then(json => json).then(data => data)
+
+1. fetch function returns us a Promise, that returns us a JSON.
+2. This JSON is again a function that returns us a promise
+3. when this promise resolves, it gives us data
+
+-add "watch-test": "jest --watch" to package.json to make it run continously like npm start
+
+- act comes from react-dom/test-utils
+- it returns a promise, so we await for act.
+- it is a function, which takes a callback fn, which is again an async fn
+- this async fn, returns renders, which renders our component

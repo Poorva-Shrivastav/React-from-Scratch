@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/customHook/useOnlineStatus";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import {
   useUpdateUserContext,
   useUserContext,
@@ -35,7 +35,7 @@ const Header = () => {
       </div>
       <div className="flex items-center justify-evenly">
         <ul className="flex p-4 text-gray-600 text-md ">
-          <li className="hover:text-orange-400">{/* <SearchBar /> */}</li>
+          {/* <li className="hover:text-orange-400"><SearchBar /></li> */}
 
           <li className="p-4 hover:text-orange-400">
             <Link to="/about">About Us</Link>

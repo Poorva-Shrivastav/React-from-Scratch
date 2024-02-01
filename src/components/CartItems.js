@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { MENU_IMG_URL } from "../utils/constants";
-import veg from "../assets/images/veg.png";
-import nonveg from "../assets/images/non-veg.png";
+// import veg from "../assets/images/veg.png";
+// import nonveg from "../assets/images/non-veg.png";
 import AddButton from "./AddButton";
 import { decrementCart, incrementCart } from "../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
@@ -20,15 +20,15 @@ const CartItems = ({ items }) => {
       {items &&
         items.length > 0 &&
         items.map((item) => (
-          <div key={item?.card?.info?.id}>
+          <div key={item?.card?.info?.id} data-testid="cartitem">
             <div className="w-full flex py-4 justify-between border-b border-x-gray-50">
               <div className="w-3/4 py-4 ">
                 <div className="flex items-center ">
-                  {item?.card?.info?.isVeg === 1 ? (
+                  {/* {item?.card?.info?.isVeg === 1 ? (
                     <img src={veg} alt="🟢" className="w-5 h-5 inline-block" />
                   ) : (
                     <img src={nonveg} alt="🔺" className="w-7 h-7" />
-                  )}
+                  )} */}
                   {item?.card?.info?.isBestseller && (
                     <span className="pl-1 text-sm text-[#ee9c00] font-semibold">
                       ⭐️ Bestseller

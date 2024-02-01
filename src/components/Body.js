@@ -7,6 +7,7 @@ import useRestaurantData from "../utils/customHook/useRestaurantData";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ALL_REST_URL } from "../utils/constants";
 import RestaurantCard, { withPromoted } from "./RestaurantCard";
+import SearchBar from "./SearchBar";
 
 export const Body = () => {
   const list = useRestaurantData();
@@ -45,7 +46,6 @@ export const Body = () => {
   const [index, setIndex] = useState(2);
 
   const fetchMoreData = async () => {
-    console.log("called");
     const res = await fetch(ALL_REST_URL);
     const json = await res.json();
     setFilteredData((prevItems) => [
@@ -70,9 +70,7 @@ export const Body = () => {
             {carouselData ? (
               carouselData.map((rest) => (
                 <Link key={rest.info.id} to={`/restaurants/${rest.info.id}`}>
-                  <div>
-                    <RestaurantCard resData={rest} />
-                  </div>
+                  <div>{<RestaurantCard resData={rest} />}</div>
                 </Link>
               ))
             ) : (
@@ -81,22 +79,33 @@ export const Body = () => {
           </div>
         </div>
       </div>
-      <h1 className="font-bold text-3xl p-4 mx-8 my-4">
-        Restaurants with online food delivery in Bangalore
-      </h1>
-      <div>
-        <button
-          className="p-2 mx-12 bg-gray-100 rounded-lg cursor-pointer"
-          onClick={() => {
-            let newList = list.filter((item) => item.info.avgRating > 4);
-            setFilteredData(newList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+      <div className="mx-10">
+        <h1 className="font-bold text-3xl p-4 my-4">
+          Restaurants with online food delivery in Bangalore
+        </h1>
+        <div className="flex justify-start mx-4">
+          <div>
+            <SearchBar list={filteredData} setFilteredData={setFilteredData} />
+          </div>
+          <div>
+            <button
+              className="p-2 mx-12 bg-gray-100 rounded-lg cursor-pointer"
+              onClick={() => {
+                let newList =
+                  list[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants.filter(
+                    (item) => item.info.avgRating > 4.5
+                  );
+
+                setFilteredData(newList);
+              }}
+            >
+              Top Rated Restaurants
+            </button>
+          </div>
+        </div>
       </div>
 
-      <InfiniteScroll
+      {/* <InfiniteScroll
         dataLength={filteredData.length}
         next={fetchMoreData}
         hasMore={hasMore}
@@ -108,7 +117,7 @@ export const Body = () => {
                 key={rest.info.id + Date.now()}
                 to={`/restaurants/${rest.info.id}`}
               >
-                <div>
+                <div data-testid="resCard">
                   <RestaurantCard resData={rest} />
                 </div>
               </Link>
@@ -117,20 +126,17 @@ export const Body = () => {
             <Shimmer />
           )}
         </div>
-      </InfiniteScroll>
+      </InfiniteScroll> */}
 
-      {/* {filteredData ? (
-          filteredData.map((rest) => (
-            <Link key={rest.info.id} to={`/restaurants/${rest.info.id}`}>
-              <div>
-                <RestaurantCard resData={rest} />
-              </div>
-            </Link>
-          ))
-        ) : (
-          <Shimmer />
-        )} */}
-      {/* </div> */}
+      <div className="flex flex-wrap justify-center ">
+        {filteredData.map((rest) => (
+          <Link key={rest.info.id} to={`/restaurants/${rest.info.id}`}>
+            <div data-testid="resCard">
+              <RestaurantCard resData={rest} />
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
